@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -137,17 +135,55 @@ class _AttScreenState extends State<AttScreen> {
         });
       },
       child: Container(
-        margin: EdgeInsets.all(8),
-        alignment: Alignment.center,
-        decoration:BoxDecoration(
-          shape: BoxShape.circle,
+        color: Colors.grey,
+
+        /*decoration:BoxDecoration(
+          shape: BoxShape.rectangle,
           color: attendanceStatus=="Absent" ? Colors.red : attendanceStatus=="Present" ? Colors.green : Colors.transparent,
           border: Border.all(color: isSelected ? Colors.black : Colors.grey),
-        ) ,
-        child: Text(
-          day.day.toString(),
-          style: TextStyle(
-            color: Colors.black,
+        ) ,*/
+        child: Container(
+          color: Colors.white,
+          margin: EdgeInsets.all(1),
+          padding: EdgeInsets.only(top: 3,left: 3,right: 3),
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Spacer(),
+                  Container(
+                    height: 25,
+                    width: 25,
+                    decoration:BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: attendanceStatus=="Absent" ? Colors.red : attendanceStatus=="Present" ? Colors.green : Colors.transparent,
+                      border: Border.all(color: isSelected ? Colors.black : Colors.grey),
+                    ) ,
+                    child: Text(
+                      day.day.toString(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                flex: 4,
+                child: Text("02pm to 10:25pm \n abs",
+                  style: TextStyle(
+                    color: Colors.black,fontSize: 10,
+                  ),
+                ),
+              ),
+              Spacer(),
+              Divider(height: 2,
+                color: attendanceStatus=="Absent" ? Colors.red : attendanceStatus=="Present" ? Colors.green : Colors.transparent,
+              ),
+
+            ],
           ),
         ),
       ),
